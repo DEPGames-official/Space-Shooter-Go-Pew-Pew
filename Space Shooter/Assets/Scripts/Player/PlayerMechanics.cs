@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMechanics : MonoBehaviour
 {
-    public float Health = 100;
-    public MeteorMechanics meteorScript;
+   // public MeteorMechanics meteorScript;
 
     // Start is called before the first frame update
     void Start()
     {
-               
+        
     }
 
     public Vector3 offset;
@@ -23,6 +19,7 @@ public class PlayerMechanics : MonoBehaviour
         ShootGun();
     }
 
+
     public Collider2D meteorCollider;
     void ShootGun()
     {
@@ -33,9 +30,10 @@ public class PlayerMechanics : MonoBehaviour
                 print(gun.collider);
                 if (gun.collider.tag == meteorCollider.tag)
                 {
-                    var scriptHealth = gun.collider.GetComponent<MeteorMechanics>();
+                    var scriptHealth = gun.collider.GetComponent<MeteorHealth>();
                     print("SHOT");
                     scriptHealth.health -= 25;
+                    
                     print(scriptHealth.health);
                 }
                 else
@@ -44,6 +42,6 @@ public class PlayerMechanics : MonoBehaviour
                 }
             }
         }
-        catch(System.NullReferenceException) { }
+        catch (System.NullReferenceException) { }
     }
 }

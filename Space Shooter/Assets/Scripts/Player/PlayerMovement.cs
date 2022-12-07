@@ -6,11 +6,11 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         speed = new Vector2(20, 20);
+        speed = new Vector2(20, 20);
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = new Vector3(inputX * speed.x, inputY * speed.y, 0);
         movement *= Time.deltaTime;
 
-        this.transform.Translate(movement);
+        transform.Translate(movement);
 
     }
 }
