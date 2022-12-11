@@ -14,7 +14,7 @@ public class MeteorMovement : MonoBehaviour
             movement *= Time.deltaTime;
             transform.Translate(movement);
         }
-        
+
 
     }
 }

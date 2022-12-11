@@ -1,10 +1,7 @@
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class Timer : MonoBehaviour
 {
-    public float health = 100;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -12,8 +9,10 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
     }
+
+
 }

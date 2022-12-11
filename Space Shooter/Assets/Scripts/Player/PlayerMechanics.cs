@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class PlayerMechanics : MonoBehaviour
 {
-   // public MeteorMechanics meteorScript;
+    // public MeteorMechanics meteorScript;
 
     // Start is called before the first frame update
-    void Start()
+    LineRenderer laser;
+    void Awake()
     {
-        
+        laser = GetComponent<LineRenderer>();
+        laser.useWorldSpace = true;
     }
 
     public Vector3 offset;
@@ -25,15 +27,20 @@ public class PlayerMechanics : MonoBehaviour
     {
         try
         {
+            
+
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                
+                
                 print(gun.collider);
                 if (gun.collider.tag == meteorCollider.tag)
                 {
                     var scriptHealth = gun.collider.GetComponent<MeteorHealth>();
+                    
                     print("SHOT");
                     scriptHealth.health -= 25;
-                    
+
                     print(scriptHealth.health);
                 }
                 else
