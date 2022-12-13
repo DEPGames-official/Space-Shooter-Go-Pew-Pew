@@ -7,18 +7,17 @@ public class MeteorMechanics : MonoBehaviour
     [SerializeField]
     private float timeRemaining = 10f;
     private float previousTimeRemaining;
-   
+
     public GameObject meteorGameObject;
     public Vector3 meteorPosition;
     public Quaternion meteorRotation;
+    public int meteorsToSpawn = 1;
 
-   
     public bool timerRunning;
 
     private void Awake()
     {
         previousTimeRemaining = timeRemaining;
-        //spawnMeteors = gameObject.AddComponent<Spawner>();
     }
 
     // Start is called before the first frame update
@@ -27,8 +26,6 @@ public class MeteorMechanics : MonoBehaviour
         var meteorsAlive = GameObject.FindGameObjectsWithTag("Meteor");
         if (meteorsAlive.Length <= 0 && timerRunning == false)
         {
-            timeRemaining = previousTimeRemaining + 1f;
-            previousTimeRemaining = timeRemaining;
 
             timerRunning = true;
         }
@@ -41,12 +38,20 @@ public class MeteorMechanics : MonoBehaviour
             }
             else if (timeRemaining <= 0)
             {
+
                 timeRemaining = 0;
 
-                System.Random randomXPosition = new System.Random();
-                int randomX = randomXPosition.Next(-10, 6);
-                meteorPosition = new Vector3(randomX, 6, 0);
-                var meteor = Instantiate(meteorGameObject, meteorPosition, meteorRotation);
+                timeRemaining = previousTimeRemaining + 1f;
+                previousTimeRemaining = timeRemaining;
+                for (int i = 0; i < meteorsToSpawn; i++)
+                {
+                    System.Random randomXPosition = new System.Random();
+                    int randomX = randomXPosition.Next(-10, 6);
+                    meteorPosition = new Vector3(randomX, 6, 0);
+                    var meteor = Instantiate(meteorGameObject, meteorPosition, meteorRotation);
+                    
+                }
+                meteorsToSpawn++;
 
                 timerRunning = false;
             }
