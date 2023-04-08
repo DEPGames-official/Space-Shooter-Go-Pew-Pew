@@ -3,22 +3,33 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Vector2 speed;
-    // Start is called before the first frame update
+    public Vector2 playerBarrier;
     void Start()
     {
         speed = new Vector2(20, 20);
     }
 
-    // Update is called once per frame
+    public float inputX;
+    public float inputY;
+
+
+
+    //private CharacterController controller;
     void FixedUpdate()
     {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
+        inputX = Input.GetAxis("Horizontal");
+        inputY = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(inputX * speed.x, inputY * speed.y, 0);
+        //print($"Input X = {inputX} \n Input Y ={inputY}");
+
+        /*Vector2 movement = new Vector2(inputX * speed.x, inputY * speed.y);
         movement *= Time.deltaTime;
+        transform.Translate(movement);*/
 
-        transform.Translate(movement);
+        Vector3 move = new Vector3(inputX, inputY, 0);
+        //controller.Move(move * Time.deltaTime * speed);
+
+
 
     }
 }

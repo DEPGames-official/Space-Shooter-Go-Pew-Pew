@@ -40,9 +40,8 @@ public class MeteorMechanics : MonoBehaviour
             {
 
                 timeRemaining = 0;
+                timeRemaining = previousTimeRemaining;
 
-                timeRemaining = previousTimeRemaining + 1f;
-                previousTimeRemaining = timeRemaining;
                 for (int i = 0; i < meteorsToSpawn; i++)
                 {
                     System.Random randomXPosition = new System.Random();

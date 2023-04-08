@@ -6,14 +6,17 @@ public class ProjectileBehaviour : MonoBehaviour
 
     void Update()
     {
+
         transform.position += transform.up * speed * Time.deltaTime;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        var scriptHealth = collision.gameObject.GetComponent<MeteorHealth>();
-        scriptHealth.health -= 25;
-
-        Destroy(gameObject);
+        if (collision.gameObject.tag == "Meteor")
+        {
+            var scriptHealth = collision.gameObject.GetComponent<MeteorHealth>();
+            scriptHealth.health -= 25;
+            Destroy(gameObject);
+        }
     }
 }
